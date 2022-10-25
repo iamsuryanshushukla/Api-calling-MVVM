@@ -1,25 +1,24 @@
-package com.example.viewmodelapi
+package com.example.viewmodelapi.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.example.newapi.Entry
+import com.example.viewmodelapi.R
 
-class ItemRecyclerAdapter(): RecyclerView.Adapter<ItemRecyclerAdapter.MyViewHolder>(){
+class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
+    var items = ArrayList<Entry>()
 
-    var items = ArrayList<com.example.viewmodelapi.model.Result>()
-
-    fun setUpdateData(items:ArrayList<com.example.viewmodelapi.model.Result>){
+    fun setUpdateData(items:ArrayList<Entry>){
         this.items = items
         notifyDataSetChanged()
     }
     class MyViewHolder(view:View):RecyclerView.ViewHolder(view){
         val textview = view.findViewById<TextView>(R.id.tv1)
-        fun bind(data:com.example.viewmodelapi.model.Result){
-            textview.text = data.artistName
+        fun bind(data:Entry){
+            textview.text = data.API
         }
 
     }
@@ -34,10 +33,13 @@ class ItemRecyclerAdapter(): RecyclerView.Adapter<ItemRecyclerAdapter.MyViewHold
     }
 
 
-//    var limit = 150
+    var limit = 150
     override fun getItemCount(): Int {
-
-        return items.size
+        return if (items.size < limit){
+            items.size
+        }else{
+            limit
+        }
 
 
     }

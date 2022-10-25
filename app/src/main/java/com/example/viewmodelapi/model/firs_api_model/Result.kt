@@ -1,4 +1,4 @@
-package com.example.viewmodelapi.model
+package com.example.viewmodelapi.model.firs_api_model
 
 data class Result(
     val artistName: String,

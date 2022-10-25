@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".SecondApi">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="List 1"
-        android:id="@+id/list_tv1"
-        android:layout_gravity="center_horizontal"
+        android:text="LIst 2"
+        android:layout_gravity="center"
         android:textSize="25dp"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
@@ -20,15 +19,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recycler_1"
-        tools:listitem="@layout/design"
-        android:padding="15dp"/>
+        android:layout_height="match_parent"
+        android:id="@+id/recylvvein"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click to open new api"
-        android:id="@+id/btn"
-        android:layout_gravity="center"/>
 </LinearLayout>
