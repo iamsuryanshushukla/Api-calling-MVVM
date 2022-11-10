@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="appsData"
-            type="com.example.viewmodelapi.model.firs_api_model.Result" />
+            name="entriesData"
+            type="com.example.viewmodelapi.model.second_api_model.Entry" />
     </data>
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text = '@{appsData.artistName}'
+            android:text='@{entriesData.API}'
             android:id="@+id/tv1" />
 
 

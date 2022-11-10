@@ -3,7 +3,7 @@ package com.example.viewmodelapi.interfaces
 //import com.example.apicalling.models.Feed
 //import com.example.apicalling.models.Model
 //import com.example.apicalling.models.Result
-import com.example.newapi.ApiModel
+import com.example.viewmodelapi.model.second_api_model.ApiModel
 import com.example.viewmodelapi.model.firs_api_model.Apps
 //import com.example.jetpackapi.AppsInterface
 import retrofit2.http.GET

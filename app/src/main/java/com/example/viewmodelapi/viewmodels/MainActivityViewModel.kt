@@ -1,69 +1,37 @@
 package com.example.viewmodelapi.viewmodels
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.newapi.ApiModel
-import com.example.viewmodelapi.interfaces.ApiInterface
-import com.example.viewmodelapi.model.firs_api_model.Apps
-import com.example.viewmodelapi.services.RetroInstacne
-import kotlinx.coroutines.*
-import kotlinx.coroutines.Dispatchers.IO
+import com.example.viewmodelapi.model.second_api_model.Entry
+import com.example.viewmodelapi.Database.EntryDataBase
+import com.example.viewmodelapi.adapters.RecyclerViewAdapter
 
 class MainActivityViewModel:ViewModel() {
 
 
-    lateinit var recyclerListLiveData:MutableLiveData<ApiModel>
-    lateinit var recyclerListLive2Data:MutableLiveData<Apps>
+
+    lateinit var recyclerListLiveData: LiveData<List<Entry>>
+    private val datasave = EntryDataBase.INSTANCE?.entryDao()
+    val entriesAdapter = RecyclerViewAdapter()
+
+
+    fun getEntries():RecyclerViewAdapter{
+        return entriesAdapter
+    }
+
+    fun setEntriesAdapter(entry: List<Entry>){
+        entriesAdapter.setUpdateData(entry)
+        entriesAdapter.notifyDataSetChanged()
+    }
 
     init {
-        recyclerListLiveData = MutableLiveData()
-        recyclerListLive2Data = MutableLiveData()
+        recyclerListLiveData = datasave?.fetchAllData()!!
     }
 
-
-//    lateinit var recyclerListLive2Data:MutableLiveData<Apps>
-
-//    init {
-//        recyclerListLive2Data = MutableLiveData()
-//    }
-
-    fun getRecyclereList2Observer():MutableLiveData<Apps>{
-        return recyclerListLive2Data
-    }
-
-
-    fun getRecyclereListObserver():MutableLiveData<ApiModel>{
+    fun getRecyclereListObserver(): LiveData<List<Entry>> {
         return recyclerListLiveData
     }
 
-    fun makeApiCall(){
-        CoroutineScope(IO).launch {
-            val retroInstance = RetroInstacne.getRetroInstance().create(ApiInterface::class.java)
-            val retroInstance2 = RetroInstacne.getRetroInstance2()
-                .create(ApiInterface::class.java)
-//            val response =
-
-            val response =
-//                async {
-                retroInstance.getDatafromApi()
-
-//            }
-
-//            val getResponse1  = response.await()
-            recyclerListLiveData.postValue(response)
-
-            val response2 =
-                async {
-                retroInstance2.getData()
-            }
-
-
-            val getResponse2 = response2.await()
-            recyclerListLive2Data.postValue(getResponse2)
-
-        }
-    }
 
 
 

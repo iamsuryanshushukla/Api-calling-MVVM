@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.viewmodelapi.R
+import com.example.viewmodelapi.databinding.DesignBinding
 import com.example.viewmodelapi.model.firs_api_model.Result
 
 class ItemRecyclerAdapter(): RecyclerView.Adapter<ItemRecyclerAdapter.MyViewHolder>(){
@@ -16,17 +17,18 @@ class ItemRecyclerAdapter(): RecyclerView.Adapter<ItemRecyclerAdapter.MyViewHold
         this.items = items
         notifyDataSetChanged()
     }
-    class MyViewHolder(view:View):RecyclerView.ViewHolder(view){
-        val textview = view.findViewById<TextView>(R.id.tv1)
+    class MyViewHolder(private var binding:DesignBinding):RecyclerView.ViewHolder(binding.root){
+//        val textview = view.findViewById<TextView>(R.id.tv1)
         fun bind(data: Result){
-            textview.text = data.artistName
+            binding.appsData = data
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.design,parent,false)
-        return MyViewHolder(view)
+        val view = LayoutInflater.from(parent.context)
+        val binding = DesignBinding.inflate(view)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

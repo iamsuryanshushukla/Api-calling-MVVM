@@ -8,21 +8,21 @@ class RetroInstacne {
 
 //        val BASE_URL = "https://rss.applemarketingtools.com/api/"
 
-        fun getRetroInstance(): Retrofit {
+        fun getRetroInstance(BASE_URL:String): Retrofit {
 
             return Retrofit.Builder()
-                .baseUrl("https://api.publicapis.org/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
 
-        fun getRetroInstance2(): Retrofit {
-
-            return Retrofit.Builder()
-                .baseUrl("https://rss.applemarketingtools.com/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-        }
+//        fun getRetroInstance2(): Retrofit {
+//
+//            return Retrofit.Builder()
+//                .baseUrl("https://rss.applemarketingtools.com/api/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build()
+//        }
 //        fun getRetroInstance2(): Retrofit {
 //
 //            return Retrofit.Builder()
